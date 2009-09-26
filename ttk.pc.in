@@ -8,4 +8,4 @@ Description: Embedded graphics toolkit
 Version: 0.1
 
 Libs: -L${libdir} -lttk
-Cflags: -I${includedir}/ttk
+Cflags: -I${includedir}/ttk -DSDL=1

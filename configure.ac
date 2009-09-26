@@ -10,6 +10,7 @@ AM_PATH_SDL()
 CFLAGS="$CFLAGS $SDL_CFLAGS"
 LIBS="$LIBS $SDL_LIBS"
 
-AC_CONFIG_FILES([Makefile src/Makefile examples/Makefile ttk.pc])
+AC_CONFIG_FILES([Makefile src/Makefile include/Makefile
+    examples/Makefile ttk.pc])
 
 AC_OUTPUT

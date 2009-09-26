@@ -1990,18 +1990,18 @@ static void name ## _tf (ttk_font f, ttk_surface srf, int x, int y, ttk_color co
 { \
     SDL_Surface *textsrf; \
     SDL_Rect dr; \
+    SDL_Color scol; \
+    \
+    scol.r = col >> 24; \
+    scol.g = (col >> 16) & 0xff; \
+    scol.b = (col >> 8) & 0xff; \
     \
     if (ttk_screen->bpp == 2) \
-	textsrf = TTF_Render ## func ## _Solid(f->tf, str, col);
-#if 0
-    else if (ttk_last_gc->usebg)
-	textsrf = TTF_Render ## func ## _Shaded(f->tf, str, col, ttk_last_gc->bg);
-#endif
-    else
-	textsrf = TTF_Render ## func ## _Blended(f->tf, str. col);
-
-    dr.x = x; dr.y = y;
-    SDL_BlitSurface (textsrf, 0, srf, &dr);
+	textsrf = TTF_Render ## func ## _Solid(f->tf, str, scol); \
+    else \
+	textsrf = TTF_Render ## func ## _Blended(f->tf, str, scol); \
+    dr.x = x; dr.y = y; \
+    SDL_BlitSurface (textsrf, 0, srf, &dr); \
 }
 TF_FUNC (draw, char, UTF8);
 TF_FUNC (lat1, char, Text);
